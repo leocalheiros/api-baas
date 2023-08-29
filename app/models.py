@@ -27,3 +27,12 @@ class Transacao(db.Model):
 
     def __repr__(self):
         return f'<Transacao {self.tipo_transacao} {self.valor}>'
+
+class RegistroAuditoria(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    acao = db.Column(db.String(100), nullable=False)
+    detalhes = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+
+    def __repr__(self):
+        return f'<RegistroAuditoria {self.acao} em {self.timestamp}>'
