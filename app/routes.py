@@ -238,14 +238,16 @@ def transferencia():
 
     return jsonify({'message': f'Transferência de R${valor_transferencia} realizada com sucesso'}), 200
 
-@app.route('/extrato/<string:conta_numero>', methods=['GET'])
-def extrato(conta_numero):
+@app.route('/extrato/', methods=['GET'])
+def extrato():
     if not login_required(session):
         return jsonify({'error': 'Acesso não autorizado'}), 401
 
+    numero_conta_origem = session.get('numero_conta')
+
     #Pra fornecer o numero da conta na url e depois puxar a transação pelo conta_id
     try:
-        conta = Conta.query.filter_by(numero_conta=conta_numero).one()
+        conta = Conta.query.filter_by(numero_conta=numero_conta_origem).one()
     except NoResultFound:
         return jsonify({'error': 'Conta não encontrada'})
 
