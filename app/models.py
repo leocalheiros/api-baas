@@ -7,6 +7,8 @@ class Conta(db.Model):
     numero_conta = db.Column(db.String(20), unique=True, nullable=False)
     saldo = db.Column(db.Float, default=0.0)
     nome_proprietario = db.Column(db.String(100), nullable=False)
+    cpf = db.Column(db.String(11), nullable=True)  # Adicione o campo CPF
+    senha = db.Column(db.String(255), nullable=True)  # Adicione o campo senha
 
     # Relacionamento com as transações
     transacoes = db.relationship('Transacao', backref='conta', lazy=True)
