@@ -14,6 +14,10 @@
 
 - Transferência: Os usuários podem transferir dinheiro entre suas próprias contas ou para outras contas, com validações de saldo e registro das transações.
 
+- Registro de transações: As transações das contas específicas todas ficam registradas no banco de de dados, com id da conta e horário da transação
+
+- Registro de auditoria: As transações do sistema em geral ficam salvas, especificando informações
+
 ## Pré-requisitos
 - Python 3.x
 - Flask

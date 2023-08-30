@@ -7,8 +7,8 @@ class Conta(db.Model):
     numero_conta = db.Column(db.String(20), unique=True, nullable=False)
     saldo = db.Column(db.Float, default=0.0)
     nome_proprietario = db.Column(db.String(100), nullable=False)
-    cpf = db.Column(db.String(11), nullable=True)  # Adicione o campo CPF
-    senha = db.Column(db.String(255), nullable=True)  # Adicione o campo senha
+    cpf = db.Column(db.String(11), nullable=True)  
+    senha = db.Column(db.String(255), nullable=True)  
 
     # Relacionamento com as transações
     transacoes = db.relationship('Transacao', backref='conta', lazy=True)
@@ -30,6 +30,7 @@ class Transacao(db.Model):
     def __repr__(self):
         return f'<Transacao {self.tipo_transacao} {self.valor}>'
 
+# Modelo para representar o registro de auditoria (todas as ações)
 class RegistroAuditoria(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     acao = db.Column(db.String(100), nullable=False)
