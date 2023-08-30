@@ -83,5 +83,5 @@ Deposito - POST
 
 - Extrato:
 ```
-/extrato/<numero_conta> - GET
+/extrato/ - GET
 ```
